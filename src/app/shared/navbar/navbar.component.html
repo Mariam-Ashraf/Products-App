@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5 ps-5">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link active fs-3 fw-bold brand" routerLink="/products">Products</a>
+                </li>
+                <li class="nav-item me-5">
+                    <a class="nav-link active fw-bold" routerLink="/cart"><i class="fas fa-shopping-cart"></i>
+                        {{addProductToCartCounter | async}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active fs-4 fw-bold bg-dark text-light" routerLink="/register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active fs-4 fw-bold ms-5 bg-dark text-light" *ngIf="(authenticationService.authenticated | async) == false" routerLink="/login">Login</a>
+
+                    <a class="nav-link active fs-4 ms-5 bg-danger text-light fw-bold" (click)="logout()" *ngIf="(authenticationService.authenticated | async) == true" routerLink="/products">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

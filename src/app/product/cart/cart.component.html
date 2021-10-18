@@ -1,0 +1,44 @@
+<table [ngClass]="{'d-none': productsInCart.length == 0, 'table table-hover': true}">
+    <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="align-items-center">
+        <tr *ngFor="let product of productsInCart;">
+            <th scope="row" class="w-25"><img [src]="product?.image" class="card-img-top w-50 mt-3" alt="product"></th>
+            <td class="w-25">
+                <h5 class="card-title">{{ product?.title }}</h5>
+            </td>
+            <td class="price">
+                <p class="card-text">{{ product?.price|egyCurrency }}</p>
+            </td>
+            <td class="quantity">
+                <div class="input-group">
+                    <span class="input-group-btn border bg-info">
+                        <button type="button" class="btn btn-number fw-bold fs-4"
+                            (click)="minus(quantityNumber[(product?.id)-1], (product?.id)-1)"
+                            [disabled]="quantityNumber[(product?.id)-1] == 1">-</button>
+                    </span>
+
+                    <input type="text" class="form-control input-number" [value]="quantityNumber[(product?.id)-1]" min="1" maxlength="2" readonly>
+
+                    <span class="input-group-btn border bg-info">
+                        <button type="button" class="btn btn-number fw-bold fs-4"
+                            (click)="plus(quantityNumber[(product?.id)-1], (product?.id)-1)">+</button>
+                    </span>
+                </div>
+            </td>
+            <td><button class="btn btn-danger" (click)="removeItem(product)">Remove</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p [ngClass]="{'d-none': productsInCart.length == 0, 'text-success mt-5 fw-bold fs-4 text-end total' : true}">Total: {{ calculateTotal()|egyCurrency }}</p>
+
+<img src="../../assets/empty-cart.png" [ngClass]="{'d-none': productsInCart.length != 0, 'w-50': true}">

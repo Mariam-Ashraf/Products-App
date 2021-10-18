@@ -1,0 +1,19 @@
+.card {
+    width: 20rem;
+    height: 95%;
+    margin-bottom: 5rem;
+}
+
+img {
+    width: 16rem;
+    height: 20rem;
+    margin-left: 2rem;
+}
+
+h5 {
+    height: 6rem;
+}
+
+i {
+    color: salmon;
+}

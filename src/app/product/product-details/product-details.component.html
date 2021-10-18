@@ -1,0 +1,17 @@
+<div class="card mb-5">
+
+    <i [ngClass]="{'fas': checkStarBtn, 'd-none': noneDisplay, 'far fa-star mt-3 ms-3': true}" (click)="addToWishlist()"></i>
+
+    <img [src]="receicevedData?.image" class="card-img-top p-3 mt-4" alt="product">
+
+    <div class="card-body p-4">
+        <h5 class="card-title">{{ receicevedData?.title }}</h5>
+        <p class="card-text">{{ receicevedData?.category }}</p>
+        <p class="card-text">{{ receicevedData?.description }}</p>
+        <p class="card-text fw-bold">{{ receicevedData?.price|egyCurrency }}</p>
+    </div>
+
+    <div class="card-footer">
+        <button class="btn btn-primary ms-2" (click)="updateCartCounter()" [disabled]="checkCartBtn[receicevedData?.id - 1]">Add to cart</button>
+    </div>
+</div>

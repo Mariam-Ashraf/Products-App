@@ -1,0 +1,18 @@
+table {
+    margin: 0 auto;
+    width: 85%;
+}
+
+div {
+    width: 35%;
+}
+
+.total {
+    margin-right: 15rem;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

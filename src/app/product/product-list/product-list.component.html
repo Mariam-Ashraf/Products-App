@@ -1,0 +1,28 @@
+<div class="row row-cols-2 w-100">
+    <div [ngClass]="{'products row row-cols-2 p-4' : true}">
+        <div *ngFor="let product of productsList;" class="col">
+            <app-product-card [productInput]="product"></app-product-card>
+        </div>
+    </div>
+
+    <div [ngClass]="{'d-none': itemsInWishlist.length == 0, 'col':true}">
+        <table class="table table-borderless table-hover w-75">
+            <thead>
+                <tr>
+                    <th scope="col">Wish list</th>
+                    <th scope="col"></th>
+                    <th scope="col" class="ms-4">{{ itemsInWishlist.length }} Products</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of itemsInWishlist;" class="h-25">
+                    <th><img [src]="item?.image " class="w-50 mt-3 " alt="product "></th>
+                    <td>{{ item?.title }}</td>
+                    <td>
+                        <button class="btn btn-danger ms-4" (click)="removeFromWishlist(item) ">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
